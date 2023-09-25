@@ -1,9 +1,8 @@
-
 Breve descrição do grupo
 
-* Turno: [L]XX
-* Grupo: YY
+* Turno: [L]09
+* Grupo: 09
 * Alunos:
-    - Aluno1 upZZZZZ 
-    - Aluno2 upZZZZZ
-    - Aluno3 upZZZZZ
+    - Davide Pinto Teixeira up202109860 
+    - Maria Abreu da Costa up202108849
+    - João António Teixeira Coelho up202004846
