@@ -13,12 +13,12 @@
 - item3
 - item4
 
-## Exploit
+## Exploit: Remote Code Execution (RCE)
 
-- item1
-- item2
-- item3
-- item4
+- In NetScaler ADC (formerly known as Citrix ADC) and NetScaler Gateway (formerly known as Citrix Gateway). 
+- Uploading files containing malicious web shells and scripts to the vulnerable system, the attacker gains unauthorized access and control over it from a remote location. 
+- This enables him to scan networks, execute arbitrary commands, and extract sensitive information from the compromised environment.
+- [Metasploit](https://www.rapid7.com/db/modules/exploit/freebsd/http/citrix_formssso_target_rce/)
 
 ## Ataques
 
