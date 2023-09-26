@@ -22,7 +22,6 @@
 
 ## Ataques
 
-- item1
-- item2
-- item3
-- item4
+- [duo.com](https://duo.com/decipher/attacks-against-citrix-cve-2023-3519-bug-escalate) reports attackers exploiting PHP webshell vulnerability for persistent access to hosts, potentially compromising security in the future.
+- A U.S. critical infrastructure organization faced a remote code execution attack, allowing hackers to plant a web shell and steal active directory data, as reported by [bleepingcomputer](https://www.bleepingcomputer.com/news/security/netscaler-adc-bug-exploited-to-breach-us-critical-infrastructure-org/).
+
