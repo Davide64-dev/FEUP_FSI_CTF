@@ -8,10 +8,8 @@
 - Organizations must urgently address this vulnerability to mitigate the risk of unauthorized access and data breaches.
 ## Catalogação
 
-- item1
-- item2
-- item3
-- item4
+- CVE Recorded on: July 18, 2023 - Documented vulnerability details as of this date.
+- CVSS Score: 9.8 - High severity level indicating critical vulnerability.
 
 ## Exploit: Remote Code Execution (RCE)
 
