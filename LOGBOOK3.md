@@ -5,7 +5,8 @@ Versions of the Booster for WooCommerce WordPress plugin up to and including 5.4
 ## CVE Explanation
 
 ## Attack step-by-step
-
+To attack this vulnerability, all that is needed is to download the source code below. It is a python exploit that generates login tokens based on timestamps and constructs URLs that can potentially grant unauthorized access to the targeted WordPress site. To use the exploit, one must simply access the target websites REST API endpoint, as described in the source code, and retrieve user data, more specifically, their IDs.
+Then, the hacker only needs to run the script with two parameters, the target website's URL and the desired user's ID, gaining access to the user's account.
 
 ## Appendix A - Source Code
 
