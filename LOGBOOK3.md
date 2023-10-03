@@ -16,6 +16,14 @@ Moreover, additional design flaws were present on the website. One notable issue
 
 Furthermore, there was an oversight in the password recovery process. When attempting to recover a password with only the user's email address and clicking the submit button, the system provided distinct success or error messages. This inconsistency in responses, regardless of whether the account existed or not, inadvertently leaked valuable information to potential attackers, thereby aiding them in targeting the website.
 
+<div style="text-align:center;">
+![wordpress info](images/image1.png)
+</div>
+
+<div style="text-align:center;">
+![wordpress info](images/image2.png)
+</div>
+
 In summary, this critical vulnerability presented an opportunity for attackers to exploit the website with the objective of gaining administrative access and subsequently taking control of it.
 
 ## Attack step-by-step
