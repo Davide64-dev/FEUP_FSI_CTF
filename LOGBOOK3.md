@@ -10,7 +10,7 @@ The primary issue with the plugin centered around the generation of verification
 
 Moreover, additional design flaws were present on the website. One notable issue was the inadvertent disclosure of the software stack used by the webpage. This disclosure inadvertently assisted attackers in identifying potential vulnerabilities in the project.
 
-
+![wordpress info](images/image.png)
 
 Furthermore, there was an oversight in the password recovery process. When attempting to recover a password with only the user's email address and clicking the submit button, the system provided distinct success or error messages. This inconsistency in responses, regardless of whether the account existed or not, inadvertently leaked valuable information to potential attackers, thereby aiding them in targeting the website.
 
