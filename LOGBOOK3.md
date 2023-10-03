@@ -4,6 +4,18 @@ Versions of the Booster for WooCommerce WordPress plugin up to and including 5.4
 
 ## CVE Explanation
 
+A critical vulnerability was discovered in the WordPress plugin known as "Booster for WooCommerce" (CVE-2021-34646). When the plugin's Email Verification module was activated along with the "Login User After Successful Verification" setting, it exposed a severe security flaw. This vulnerability allowed malicious actors to gain unauthorized access to the website by impersonating any user, ranging from regular users to administrative accounts. The root cause of this issue was a weakness in the token generation process within the "reset_and_mail_activation_link" function, located in the "~/includes/class-wcj-emails-verification.php" file.
+
+The primary issue with the plugin centered around the generation of verification tokens required to validate email addresses. Specifically, the code employed a simplistic MD5 hash of the timestamp when the request was initiated. Consequently, an attacker could easily replicate the verification code for any user account by determining the timestamp of their request.
+
+Moreover, additional design flaws were present on the website. One notable issue was the inadvertent disclosure of the software stack used by the webpage. This disclosure inadvertently assisted attackers in identifying potential vulnerabilities in the project.
+
+
+
+Furthermore, there was an oversight in the password recovery process. When attempting to recover a password with only the user's email address and clicking the submit button, the system provided distinct success or error messages. This inconsistency in responses, regardless of whether the account existed or not, inadvertently leaked valuable information to potential attackers, thereby aiding them in targeting the website.
+
+In summary, this critical vulnerability presented an opportunity for attackers to exploit the website with the objective of gaining administrative access and subsequently taking control of it.
+
 ## Attack step-by-step
 To attack this vulnerability, all that is needed is to download the source code below. It is a python exploit that generates login tokens based on timestamps and constructs URLs that can potentially grant unauthorized access to the targeted WordPress site. To use the exploit, one must simply access the target websites REST API endpoint, as described in the source code, and retrieve user data, more specifically, their IDs.
 Then, the hacker only needs to run the script with two parameters, the target website's URL and the desired user's ID, gaining access to the user's account.
