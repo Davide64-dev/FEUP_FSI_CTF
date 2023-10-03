@@ -28,7 +28,7 @@ In summary, this critical vulnerability presented an opportunity for attackers t
 
 ## Attack step-by-step
 1. Inspect the entire website. There is a page that indicates the versions of the plugins that are installed.
-2. Search online for CVEs related to the software. You will find many. In this case, we received a tip that it had something to do with authentication, so that should narow it down.
+2. Search online for CVEs related to the software. You will find many. In this case, we received a tip that it had something to do with authentication, so that should narrow it down.
 3. You will find the source code below. Download it. It is a python exploit that generates login tokens based on timestamps and constructs URLs that can potentially grant unauthorized access to the targeted WordPress site.
 4. To use the exploit, one must simply access the target websites REST API endpoint, as described in the source code, and retrieve user data, more specifically, their IDs.
 5. The hacker only needs to run the script with two parameters, the target website's URL and the desired user's ID, gaining access to the user's account.
