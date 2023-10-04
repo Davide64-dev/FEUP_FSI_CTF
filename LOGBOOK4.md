@@ -19,3 +19,16 @@ env PWD # we could also use printenv
 ```
 
 (print do output)
+
+## Task 2: Passing Environment Variables from Parent Process to Child Process
+
+The next task was to compile the code that creates a new process. This new process (the child) becomes a duplicate of the parent process (we used fork() function).
+
+After compiling the code and save them into different files, we found out that the outputs were the same, which concludes that, using the fork method, the envirnoment variables of the child process are the same as the ones that are in the parent envirnoment variable.
+
+```SHELL
+gcc myprintenv.c
+a.out > file
+```
+
+(print do output)
