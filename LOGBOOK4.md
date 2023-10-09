@@ -1,6 +1,6 @@
 # LOGBOOK4
 
-This document pretends do document the work that was made (adicionar link para o enunciado)
+This document pretends to document the work that was  during week 4 of the FSI course - (link to guide) [https://seedsecuritylabs.org/Labs_20.04/Files/Environment_Variable_and_SetUID/Environment_Variable_and_SetUID.pdf]
 
 ## Task 1: Manipulating Environment Variables
 
