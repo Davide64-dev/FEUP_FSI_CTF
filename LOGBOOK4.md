@@ -4,7 +4,7 @@ This document pretends do document the work that was made (adicionar link para o
 
 ## Task 1: Manipulating Environment Variables
 
-In this task, the goal was to confirm which are the envirnoment variables that exist.
+In this task, the goal was to confirm what environment variables exist.
 
 ```SHELL
 printenv # we could also use env
@@ -12,7 +12,7 @@ printenv # we could also use env
 
 (print do output)
 
-Or, if we want, we could also use the command for checking one envirnoment variable specifically, in this example, we are using variable PWD as an example:
+Or, if we want, we could also use the command for checking one environment variable specifically, in this example, we are using variable PWD as an example:
 
 ```SHELL
 env PWD # we could also use printenv
@@ -32,3 +32,23 @@ a.out > file
 ```
 
 (print do output)
+
+## Task 3: Environment Variables and execve()
+
+This task studies how environment variables are affected when a new program is executed via execve(), a function that runs the new program inside a system calling process.
+
+After compilation of the given code, we can see that there is no return. However, after changing NULL to environ, we can see that the environment variables are returned. This is due to the fact that environ is defined by unistd.h and is the list of environment variables of the system, that are inherited by the program.
+
+```SHELL
+gcc myenv.c -o myenv
+./myenv
+```
+(print do output)
+
+## Task 4: Environment Variables and system()
+
+
+## Task 5: Environment Variables and Set-UID Programs
+
+
+## Task 6: The PATH Environment Variable and Set-UID Programs
