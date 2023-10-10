@@ -49,6 +49,8 @@ gcc myenv.c -o myenv
 
 In this task, we explore how environment variables are handled when a new program is executed through the system() function. Unlike execve(), which directly runs a command, system() invokes /bin/sh -c command, essentially launching a shell to execute the specified command. The implementation of system() relies on execl(), which in turn employs execve() while passing along the environment variables array. Consequently, when using system(), the environment variables of the calling process are inherited and passed to the new program executed by /bin/sh.
 
+Agter the compilation of the given code, we obtain this result.
+
 (print do output)
 
 
@@ -56,12 +58,20 @@ In this task, we explore how environment variables are handled when a new progra
 
 Set-UID is a crucial security feature in Unix systems, enabling programs to run with the privileges of their owners. While Set-UID offers powerful capabilities, it poses significant security risks due to privilege escalation. Importantly, while a Set-UID program's behavior is determined by its code, users can indirectly influence it through environment variables. To assess this impact, it's essential to determine whether environment variables are inherited by Set-UID program processes from the user's processes.
 
+After the compilation of the given code, we execute the commands below in order to change the permissions.
+
+(print do output)
+
 ```SHELL
 sudo chown root foo
 sudo chmod 4755 foo
+```
+
+After changing the permissions, we run the following command on the shell, as a normal user.
+
+```SHELL
 export LD_LIBRARY_PATH=/home/seed
 ```
-(print do output)
 
 
 ## Task 6: The PATH Environment Variable and Set-UID Programs
