@@ -1,0 +1,1 @@
+Não te esqueças de escrever um writeup de como conseguiste resolver este desafio, por exemplo num ficheiro CTF4.md ou no próprio LOGBOOK4.md no repositório git do teu grupo. Esse writeup deve incluir não apenas o resultado final, mas como construíste o ataque e de que vulnerabilidade abusaste e/ou que contramedidas poderiam ter evitado que tivesses tido sucess
