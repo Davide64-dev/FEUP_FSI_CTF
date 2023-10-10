@@ -59,6 +59,7 @@ Set-UID is a crucial security feature in Unix systems, enabling programs to run 
 ```SHELL
 sudo chown root foo
 sudo chmod 4755 foo
+export LD_LIBRARY_PATH=/home/seed
 ```
 (print do output)
 
