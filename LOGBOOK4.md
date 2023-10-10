@@ -56,6 +56,10 @@ In this task, we explore how environment variables are handled when a new progra
 
 Set-UID is a crucial security feature in Unix systems, enabling programs to run with the privileges of their owners. While Set-UID offers powerful capabilities, it poses significant security risks due to privilege escalation. Importantly, while a Set-UID program's behavior is determined by its code, users can indirectly influence it through environment variables. To assess this impact, it's essential to determine whether environment variables are inherited by Set-UID program processes from the user's processes.
 
+```SHELL
+sudo chown root foo
+sudo chmod 4755 foo
+```
 (print do output)
 
 
