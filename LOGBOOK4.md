@@ -76,3 +76,10 @@ export LD_LIBRARY_PATH=/home/seed
 
 ## Task 6: The PATH Environment Variable and Set-UID Programs
 
+Calling system() within a Set-UID program is quite dangerous, since the behavior of the shell program invoked can be influenced by user-provided environment variables, notably the PATH variable. The ability for malicious users to manipulate these variables, such as altering the PATH to include specific directories, can lead to substantial control over the behavior of the Set-UID program.
+
+In Bash, the PATH environment variable can be changed by running the code below:
+
+```SHELL
+export PATH=/home/seed:$PATH
+```
