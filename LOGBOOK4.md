@@ -11,8 +11,9 @@ printenv # we could also use env
 ```
 <div style= "width=50%;">
 ![Task1](images/Logbook4/Task1_1.png)
-![Task1](images/Logbook4/Task1_2.png)
 </div>
+![Task1](images/Logbook4/Task1_2.png)
+
 
 Or, if we want, we could also use the command for checking one environment variable specifically, in this example, we are using variable PWD as an example:
 
