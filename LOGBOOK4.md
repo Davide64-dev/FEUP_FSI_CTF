@@ -9,9 +9,8 @@ In this task, the goal was to confirm what environment variables exist.
 ```SHELL
 printenv # we could also use env
 ```
-<div style= "width=50%;">
+
 ![Task1](images/Logbook4/Task1_1.png)
-</div>
 ![Task1](images/Logbook4/Task1_2.png)
 
 
@@ -34,7 +33,7 @@ gcc myprintenv.c
 a.out > file
 ```
 
-(print do output)
+![Task2](images/Logbook4/Task2.png)
 
 ## Task 3: Environment Variables and execve()
 
@@ -46,15 +45,19 @@ After compilation of the given code, we can see that there is no return. However
 gcc myenv.c -o myenv
 ./myenv
 ```
-(print do output)
+
+![Task3](images/Logbook4/Task3_1.png)
+![Task3](images/Logbook4/Task3_2.png)
 
 ## Task 4: Environment Variables and system()
 
 In this task, we explore how environment variables are handled when a new program is executed through the system() function. Unlike execve(), which directly runs a command, system() invokes /bin/sh -c command, essentially launching a shell to execute the specified command. The implementation of system() relies on execl(), which in turn employs execve() while passing along the environment variables array. Consequently, when using system(), the environment variables of the calling process are inherited and passed to the new program executed by /bin/sh.
 
-Agter the compilation of the given code, we obtain this result.
+After the compilation of the given code, we obtain this result.
 
-(print do output)
+
+![Task4](images/Logbook4/Task4_1.png)
+![Task4](images/Logbook4/Task4_2.png)
 
 
 ## Task 5: Environment Variables and Set-UID Programs
@@ -62,8 +65,6 @@ Agter the compilation of the given code, we obtain this result.
 Set-UID is a crucial security feature in Unix systems, enabling programs to run with the privileges of their owners. While Set-UID offers powerful capabilities, it poses significant security risks due to privilege escalation. Importantly, while a Set-UID program's behavior is determined by its code, users can indirectly influence it through environment variables. To assess this impact, it's essential to determine whether environment variables are inherited by Set-UID program processes from the user's processes.
 
 After the compilation of the given code, we execute the commands below in order to change the permissions.
-
-(print do output)
 
 ```SHELL
 sudo chown root foo
@@ -79,6 +80,11 @@ export LD_LIBRARY_PATH=/home/seed
 The child process inherits PATH and LD_LIBRARY_PATH, but doesn't inherit the variable we set ourselves, as a security measure to maintain the security of privileged processes and prevent unauthorized users from influencing them through environment variables.
 
 
+![Task5](images/Logbook4/Task5_1.png)
+![Task5](images/Logbook4/Task5_2.png)
+![Task5](images/Logbook4/Task5_3.png)
+
+
 ## Task 6: The PATH Environment Variable and Set-UID Programs
 
 Calling system() within a Set-UID program is quite dangerous, since the behavior of the shell program invoked can be influenced by user-provided environment variables, notably the PATH variable. The ability for malicious users to manipulate these variables, such as altering the PATH to include specific directories, can lead to substantial control over the behavior of the Set-UID program.
@@ -91,7 +97,7 @@ export PATH=/home/seed/Documents/seed-labs-master/category-software/Environment_
 
 In the lab we created our malicious program that is shown below:
 
-```
+``` c
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -107,3 +113,8 @@ int main() {
 By altering the PATH environment variable to include a directory where a malicious script or binary with the same name as the intended command (in this case, ls) is located, the system will execute the malicious code instead of the intended command when the Set-UID program is invoked.
 
 If the Set-UID program is running with root privileges and a malicious user manages to execute their own code instead of /bin/ls, then their malicious code would also run with root privileges.
+
+
+![Task6](images/Logbook4/Task6_1.png)
+![Task6](images/Logbook4/Task6_2.png)
+![Task6](images/Logbook4/Task6_3.png)
