@@ -10,7 +10,8 @@ In this task, the goal was to confirm what environment variables exist.
 printenv # we could also use env
 ```
 
-(print do output)
+![Task1](images/Logbook4/Task1_1.png)
+![Task1](images/Logbook4/Task1_2.png)
 
 Or, if we want, we could also use the command for checking one environment variable specifically, in this example, we are using variable PWD as an example:
 
