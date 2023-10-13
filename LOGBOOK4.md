@@ -102,7 +102,7 @@ We also had to run the following command in order to not have problems with the 
 sudo ln -sf /bin/zsh /bin/sh
 ```
 
-In the lab we created our malicious program that is shown below:
+In the lab, we created our malicious program that is shown below. It was supposed to be able to change the file's permissions.
 
 ``` c
 #include <stdio.h>
