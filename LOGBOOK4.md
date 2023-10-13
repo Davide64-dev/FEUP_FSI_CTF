@@ -20,7 +20,8 @@ Or, if we want, we could also use the command for checking one environment varia
 env PWD # we could also use printenv
 ```
 
-(print do output)
+![Task1](images/Logbook4/Task1_3.png)
+
 
 ## Task 2: Passing Environment Variables from Parent Process to Child Process
 
@@ -93,6 +94,12 @@ In Bash, the PATH environment variable can be changed by running the code below:
 
 ```SHELL
 export PATH=/home/seed/Documents/seed-labs-master/category-software/Environment_Variable_and_SetUID/Labsetup:$PATH
+```
+
+We also had to run the following command in order to not have problems with the countermeasures from dash.
+
+```SHELL
+sudo ln -sf /bin/zsh /bin/sh
 ```
 
 In the lab we created our malicious program that is shown below:
