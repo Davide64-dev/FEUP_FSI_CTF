@@ -7,7 +7,7 @@ This document pretends to document the work that was  during week 4 of the FSI c
 In this task, the goal was to confirm what environment variables exist.
 
 ```SHELL
-printenv # we could also use env
+env # we could also use printenv
 ```
 
 ![Task1](images/Logbook4/Task1_1.png)
