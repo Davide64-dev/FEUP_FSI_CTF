@@ -73,6 +73,8 @@ After changing the permissions, we run the following command on the shell, as a 
 export LD_LIBRARY_PATH=/home/seed
 ```
 
+The child process inherits PATH and LD_LIBRARY_PATH, but doesn't inherit the variable we set ourselves, as a security measure to maintain the security of privileged processes and prevent unauthorized users from influencing them through environment variables.
+
 
 ## Task 6: The PATH Environment Variable and Set-UID Programs
 
@@ -83,3 +85,7 @@ In Bash, the PATH environment variable can be changed by running the code below:
 ```SHELL
 export PATH=/home/seed:$PATH
 ```
+
+By altering the PATH environment variable to include a directory where a malicious script or binary with the same name as the intended command (in this case, ls) is located, the system will execute the malicious code instead of the intended command when the Set-UID program is invoked.
+
+If the Set-UID program is running with root privileges and a malicious user manages to execute their own code instead of /bin/ls, then their malicious code would also run with root privileges.
