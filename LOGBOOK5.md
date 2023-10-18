@@ -17,3 +17,6 @@ If we run them, we will create a new shell inside our terminal, that will allow 
 (prints)
 
 ## Task 2
+
+The purpose of Task 2 is to understand the vulnerable program stack.c and how to exploit it to gain root privilege.
+
