@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 }
 ```
 
-(prints)
+![Task1](images/logbook5/git51.png)
 
 ## Task 2
 
