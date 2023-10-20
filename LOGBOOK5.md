@@ -96,7 +96,7 @@ $ sudo chmod 4755 stack
 
 Our objective in this task is to exploit the buffer-overflow vulnerability in the target program. To achieve this, we'll use a debugger-based approach to pinpoint the vulnerability, using gdb to debug the stack-L1-dbg.
 
-print debug
+![Task3](images/logbook5/git52.png)
 
 ```py
 #!/usr/bin/python3
