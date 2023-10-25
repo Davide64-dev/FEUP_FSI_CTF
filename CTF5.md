@@ -21,7 +21,7 @@ RWX: Has RWX segments
 We started by analising the source code to understand the following points:
 
 - *Is there any file that is opened and read by the program?*
-    Yes the mem.txt file is opened and read by the program as we can see in Figure 1.
+    - Yes the mem.txt file is opened and read by the program as we can see in Figure 1.
 
 (**print 1_1**)
 
