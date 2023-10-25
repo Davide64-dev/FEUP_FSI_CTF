@@ -26,7 +26,7 @@ We started by analising the source code to understand the following points:
 (**print 1_1**)
 
 - *Is there any way of controlling the file that is opened?* 
-    Yes, by changing the meme_file variable's content, we can control which file is read and opened.
+    - Yes, by changing the meme_file variable's content, we can control which file is read and opened.
 
 - *Is there a buffer-overflow vulnerability? If yes, what can you do?*
-    Yes there is. The buffer has 32 bytes but the scanf will read 40. We also know that the meme_file variable has 8 bytes and is positioned before the buffer in memory. Therefore, by overwriting the buffer we can modify the meme_file variable in order to open the file that we want to.
+    - Yes there is. The buffer has 32 bytes but the scanf will read 40. We also know that the meme_file variable has 8 bytes and is positioned before the buffer in memory. Therefore, by overwriting the buffer we can modify the meme_file variable in order to open the file that we want to.
