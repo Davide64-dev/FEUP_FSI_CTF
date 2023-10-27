@@ -1,6 +1,6 @@
 # CTF5
 
-The primary objective of this Capture The Flag (CTF) challenge is to exploit a buffer overflow vulnerability in the program, ultimately gaining unauthorized access to the flag stored in the 'flag.txt' file, which is otherwise inaccessible.
+The primary objective of this Capture The Flag (CTF) challenges is to exploit a buffer overflow vulnerability in the program, ultimately gaining unauthorized access to the flag stored in the 'flag.txt' file, which is otherwise inaccessible.
 
 ## Challenge 1
 
