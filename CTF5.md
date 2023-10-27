@@ -47,3 +47,14 @@ By opening the exploit-example.py and changing the DEBUG to True we had the outp
 
 (**print1_6**)
 
+We initially attempted to inject 32 characters, corresponding to the 32-byte buffer size, followed by the filename 'flag.txt' to access it.
+
+(**print 1_7**)
+
+Upon executing this initial exploit, we observed the output 'flag_placeholder'.
+
+(**print 1_8**)
+
+Therefore we switched the DEBUG back to False and re-executed the exploit, successfully obtaining the flag.
+
+(**print 1_9**)
