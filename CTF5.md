@@ -25,7 +25,7 @@ We started by analising the source code to understand the following points:
 - *Is there any file that is opened and read by the program?*
     - Yes the mem.txt file is opened and read by the program as we can see in the figure below.
 
-(**print 1_1**)
+![Image1_1](images/logbook5/1_1.png)
 
 - *Is there any way of controlling the file that is opened?* 
     - Yes, by changing the meme_file variable's content, we can control which file is read and opened.
@@ -33,7 +33,7 @@ We started by analising the source code to understand the following points:
 - *Is there a buffer-overflow vulnerability? If yes, what can you do?*
     - Yes there is. The buffer has 32 bytes but the scanf will read 40. We also know that the meme_file variable has 8 bytes and is positioned before the buffer in memory. Therefore, by overwriting the buffer we can modify the meme_file variable in order to open the file that we want to.
 
-(**print 1_2**)
+![Image1_2](images/logbook5/1_2.png)
 
 
 ### Do the exploit
@@ -41,25 +41,25 @@ We started by analising the source code to understand the following points:
 After answering the questions above, we had all the information needed to do the exploit.
 By opening the exploit-example.py and changing the DEBUG to True we had the output showned in the images below. 
 
-(**print 1_3**)
+![Image1_3](images/logbook5/1_3.png)
 
-(**print 1_4**)
+![Image1_4](images/logbook5/1_4.png)
 
-(**print1_5**)
+![Image1_5](images/logbook5/1_5.png)
 
-(**print1_6**)
+![Image1_6](images/logbook5/1_6.png)
 
 We initially attempted to inject 32 characters, corresponding to the 32-byte buffer size, followed by the filename 'flag.txt' to access it.
 
-(**print 1_7**)
+![Image1_7](images/logbook5/1_7.png)
 
 Upon executing this initial exploit, we observed the output 'flag_placeholder'.
 
-(**print 1_8**)
+![Image1_8](images/logbook5/1_8.png)
 
 Therefore we switched the DEBUG back to False and re-executed the exploit, successfully obtaining the flag.
 
-(**print 1_9**)
+![Image1_9](images/logbook5/1_9.png)
 
 
 
@@ -67,7 +67,7 @@ Therefore we switched the DEBUG back to False and re-executed the exploit, succe
 
 In this challenge, we were given a zip file where we had an executable (program) and a source code (main.c). We could also adapt the python script of the challenge above to this challenge.
 
-(**print 2_1**)
+![Image2_1](images/logbook5/2_1.png)
 
 We also had access to the following information below by running the following command:
 
