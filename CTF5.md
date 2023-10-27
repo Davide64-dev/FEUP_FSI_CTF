@@ -89,7 +89,21 @@ We started by analising the source code to understand the following points:
 - *What modifications were implemented?*
     - We observed that the 'meme_file' variable now has an extra byte, the 'scanf' function reads 45 bytes instead of the previous 32, and a new variable 'val' with 4 bytes was introduced.
 
-(**print **)    
+(**print 2_2**)    
 
 - *Do these changes fully resolve the issue?*
     - No, these changes enhance security by requiring the correct value to access the flag. However, if the correct value is obtained, access to the flag, which should be inaccessible, is still possible.
+
+- *Is it possible to overcome those changes by using a similar aproach of the Challenge 1?*
+    - Yes, we can still inject the 32 characters in the buffer followed by the name of the file we want to access (flag.txt). However, between them, we have to put the correct value of the val.
+
+
+### Do the exploit
+
+After answering the questions above, we had all the information needed to do the exploit.
+We then proceeded to run the exploit-example.py under both DEBUG settings, both False and True, and the outputs are the ones below.
+
+(**print 2_3**)
+
+(**print 2_4**)
+
