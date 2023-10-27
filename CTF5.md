@@ -10,13 +10,14 @@ We also had access to the following information below by running the following c
 ```SHELL
 checksec program
 ```
-
+```
 Arch: i386-32-little
 RELRO: No RELRO
 Stack: No canary found
 NX: NX disabled
 PIE: No PIE (0x8048000)
 RWX: Has RWX segments
+```
 
 We started by analising the source code to understand the following points:
 
