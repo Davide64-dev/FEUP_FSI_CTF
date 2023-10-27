@@ -110,6 +110,9 @@ We then proceeded to run the exploit-example.py under both DEBUG settings, both 
 To gain access to the flag stored in the file, we began by following the same approach as in the previous challenge, attempting to inject 32 characters along with the desired filename ('flag.txt'). Then we tried to identify the correct value for the val variable, which needed to be placed between the characters and the filename to successfully execute the exploit. 
 Initially the val variable contains the hexadecimal value '0xdeadbeef' which was stored in memory as four bytes: 'ef be ad de' in little-endian format. However, we also know that in order to access the flag.txt file, the variable val had to be equal to '0xfefc2324'. Therefore, in the exploit, we inserted the bytes '\x24\x23\xfc\xfe', which the program interpreted in the same little-endian format. As a result, our input overwrote the initial value of the variable, setting it to '0xfefc2324'. This value allowed us to satisfy the if statement condition and gain access to the file we wanted.
 
-(**print 2_5**)
-
 (**print 2_6**)
+
+
+After correctly inserting the input, we re-executed the python script and successfully obtained the flag.
+
+(**print 2_5**)
