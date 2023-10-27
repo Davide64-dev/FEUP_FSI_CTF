@@ -51,11 +51,11 @@ By opening the exploit-example.py and changing the DEBUG to True we had the outp
 
 We initially attempted to inject 32 characters, corresponding to the 32-byte buffer size, followed by the filename 'flag.txt' to access it.
 
-![Image1_7](images/logbook5/1_7.png)
+![Image1_9](images/logbook5/1_9.png)
 
 Upon executing this initial exploit, we observed the output 'flag_placeholder'.
 
-![Image1_9](images/logbook5/1_9.png)
+![Image1_7](images/logbook5/1_7.png)
 
 Therefore we switched the DEBUG back to False and re-executed the exploit, successfully obtaining the flag.
 
