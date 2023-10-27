@@ -10,6 +10,7 @@ We also had access to the following information below by running the following c
 ```SHELL
 checksec program
 ```
+
 ```
 Arch: i386-32-little
 RELRO: No RELRO
@@ -59,3 +60,36 @@ Upon executing this initial exploit, we observed the output 'flag_placeholder'.
 Therefore we switched the DEBUG back to False and re-executed the exploit, successfully obtaining the flag.
 
 (**print 1_9**)
+
+
+
+## Challenge 2
+
+In this challenge, we were given a zip file where we had an executable (program) and a source code (main.c). We could also adapt the python script of the challenge above to this challenge.
+
+(**print 2_1**)
+
+We also had access to the following information below by running the following command:
+
+```SHELL
+checksec program
+```
+
+```
+Arch: i386-32-little
+RELRO: No RELRO
+Stack: No canary found
+NX: NX disabled
+PIE: No PIE (0x8048000)
+RWX: Has RWX segments
+```
+
+We started by analising the source code to understand the following points:
+
+- *What modifications were implemented?*
+    - We observed that the 'meme_file' variable now has an extra byte, the 'scanf' function reads 45 bytes instead of the previous 32, and a new variable 'val' with 4 bytes was introduced.
+
+(**print **)    
+
+- *Do these changes fully resolve the issue?*
+    - No, these changes enhance security by requiring the correct value to access the flag. However, if the correct value is obtained, access to the flag, which should be inaccessible, is still possible.
