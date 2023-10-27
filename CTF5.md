@@ -55,11 +55,11 @@ We initially attempted to inject 32 characters, corresponding to the 32-byte buf
 
 Upon executing this initial exploit, we observed the output 'flag_placeholder'.
 
-![Image1_8](images/logbook5/1_8.png)
+![Image1_8](images/logbook5/1_9.png)
 
 Therefore we switched the DEBUG back to False and re-executed the exploit, successfully obtaining the flag.
 
-![Image1_9](images/logbook5/1_9.png)
+![Image1_9](images/logbook5/1_8.png)
 
 
 
