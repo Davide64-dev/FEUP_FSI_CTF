@@ -89,7 +89,7 @@ We started by analising the source code to understand the following points:
 - *What modifications were implemented?*
     - We observed that the 'meme_file' variable now has an extra byte, the 'scanf' function reads 45 bytes instead of the previous 32, and a new variable 'val' with 4 bytes was introduced.
 
-(**print 2_2**)    
+![Image2_2](images/logbook5/2_2.png) 
 
 - *Do these changes fully resolve the issue?*
     - No, these changes enhance security by requiring the correct value to access the flag. However, if the correct value is obtained, access to the flag, which should be inaccessible, is still possible.
@@ -103,16 +103,16 @@ We started by analising the source code to understand the following points:
 After answering the questions above, we had all the information needed to do the exploit.
 We then proceeded to run the exploit-example.py under both DEBUG settings, both False and True, and the outputs are the ones below.
 
-(**print 2_3**)
+![Image2_3](images/logbook5/2_3.png)
 
-(**print 2_4**)
+![Image2_4](images/logbook5/2_4.png)
 
 To gain access to the flag stored in the file, we began by following the same approach as in the previous challenge, attempting to inject 32 characters along with the desired filename ('flag.txt'). Then we tried to identify the correct value for the val variable, which needed to be placed between the characters and the filename to successfully execute the exploit. 
 Initially the val variable contains the hexadecimal value '0xdeadbeef' which was stored in memory as four bytes: 'ef be ad de' in little-endian format. However, we also know that in order to access the flag.txt file, the variable val had to be equal to '0xfefc2324'. Therefore, in the exploit, we inserted the bytes '\x24\x23\xfc\xfe', which the program interpreted in the same little-endian format. As a result, our input overwrote the initial value of the variable, setting it to '0xfefc2324'. This value allowed us to satisfy the if statement condition and gain access to the file we wanted.
 
-(**print 2_6**)
+![Image2_6](images/logbook5/2_6.png)
 
 
 After correctly inserting the input, we re-executed the python script and successfully obtained the flag.
 
-(**print 2_5**)
+![Image2_5](images/logbook5/2_5.png)
