@@ -55,7 +55,7 @@ We initially attempted to inject 32 characters, corresponding to the 32-byte buf
 
 Upon executing this initial exploit, we observed the output 'flag_placeholder'.
 
-![Image1_9](https://git.fe.up.pt/fsi/fsi2324/logs/l09g09/-/blob/main/images/logbook5/1_9.png)
+![Image1_9](images/logbook5/1_9.png)
 
 Therefore we switched the DEBUG back to False and re-executed the exploit, successfully obtaining the flag.
 
