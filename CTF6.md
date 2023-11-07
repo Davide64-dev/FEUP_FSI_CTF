@@ -58,5 +58,5 @@ The CSRF part takes advantage of the fact that the browser automatically include
 
 Some suggestions of security measures to prevent attacks like this are:
 
-- Proper input validation and output encoding to prevent XSS attacks - we could use, for example, a regular expression. For example [a-bA-B]{26}.
+- Proper input validation and output encoding to prevent XSS attacks - we could use, for example, a regular expression. For example [a-b0-9]{40}.
 - CSRF tokens to ensure that actions on the server are initiated by the user rather than an attacker.
