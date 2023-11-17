@@ -48,7 +48,7 @@ Exploiting the vulnerability with a crafted input:
 
 `password: <anything> `
 
-This approach works, because the sql statement that will be queried to the database will be partionally connected and, with that, we can enter the system:
+This approach works, because the sql statement that will be queried to the database will be partially connected and, with that, we can enter the system:
 
 ```sql
     SELECT id, name, eid, salary, birth, ssn, address, email,
