@@ -31,7 +31,7 @@ In this task, our goal is to crash the program by providing an input to the serv
 We will use the command ```echo hello | nc 10.9.0.5 9090```
 If myprintf() returns, it will print "Returned properly" on the terminal.
 
-(print)
+![Task1](images/logbook7/logbook7_1.png)
 
 ## TASK 2.A
 
@@ -39,13 +39,13 @@ To accomplish this task, understanding how printf works in terms of exposing sen
 
 Given that we aim to print 4 bytes, each consisting of 8 bits, we need to print 64 (4 * 8) registers, with 63 preceding registers leading up to the target register. Therefore, we'll need to modify the string 's' to accommodate this format.
 
-(print ficheiro)
+![Task2A1](images/logbook7/logbook7_2.png)
 
 We then execute build_string.py, and run ```cat badfile | nc 10.9.0.5 9090```
 
 And as we can see, we have the desired result, as we know the next address:
 
-(print)
+![Task2A2](images/logbook7/logbook7_3.png)
 
 ## TASK 2.B
 
@@ -53,9 +53,11 @@ Now that the address of the next variable has been identified, we can use it to 
 
 This time we aim to retrieve the content stored at this address. We know that this content is in string format. Therefore, our approach involves reading 63 registers and, for the last one,using the '%s' format specifier to read the content in the register.
 
+![Task2B1](images/logbook7/logbook7_4.png)
+
 By running ```cat badfile | nc 10.9.0.5 9090``` again, we now get the secret message:
 
-(print output)
+![Task2B2](images/logbook7/logbook7_5.png)
 
 
 ## TASK 3.A
@@ -66,7 +68,9 @@ Similar to what we did in task 2B, we aim to manipulate the address by positioni
 
 To access this address, we'll use the "%x" format specifier 64 times, altering the values for 63 iterations before using "%n". This method is similar to the one we previously used to disrupt the server, allowing us to write to the address that the pointer is referencing. In this scenario, the pointer leads to the location where the variable was originally stored.
 
-(print output)
+![Task3A1](images/logbook7/logbook7_6.png)
+
+![Task3A2](images/logbook7/logbook7_7.png)
 
 ## TASK 3.B
 
@@ -74,11 +78,11 @@ In task 3.B, we have to change the target variable's value to 0x5000.
 
 We know that using "%n" in 'printf' lets us write a number of characters printed so far. This time, we're aiming for 0x5000. To make this work, our string needs to be 5000 characters long before we reach "%n".
 
-(foto do build_string)
+![Task3B1](images/logbook7/logbook7_8.png)
 
 After which, we get the following output:
 
-(print do output)
+![Task3B2](images/logbook7/logbook7_9.png)
 
 ## Conclusions
 
