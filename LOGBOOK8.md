@@ -33,6 +33,10 @@ $sql = "SELECT id, name, eid, salary, birth, ssn, address, email,
 $result = $conn -> query($sql);
 ```
 
+and then, the form looks like this:
+
+![Form1](images/LOGBOOK8/form1.png)
+
 ### Task 2.1 - Attack from webpage
 
 Considering that we know the code, it is really easy to exploit this vulnerability:
