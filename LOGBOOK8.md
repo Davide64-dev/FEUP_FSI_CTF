@@ -35,7 +35,9 @@ $result = $conn -> query($sql);
 
 The associated form:
 
-![Form1](images/LOGBOOK8/form1.png)
+<div align="center">
+  <img src="images/LOGBOOK8/form1.png" alt="Form1" width="50%">
+</div>
 
 ### Task 2.1 - Attack from webpage
 
@@ -103,7 +105,9 @@ $conn->query($sql);
 
 The associated form:
 
-![Form2](images/LOGBOOK8/form2.png)
+<div align="center">
+  <img src="images/LOGBOOK8/form2.png" alt="Form2" width="50%">
+</div>
 
 ### Task 3.1 - Modify own salary
 
