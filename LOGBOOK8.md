@@ -2,10 +2,24 @@
 
 This logbook pretends to documentante the work that was made in the SQL Injection lab, deduce some conclusions, identify the errors that were commited as well as to suggest the mosifications that would make the system secure to this type of attacks.
 
+## Task 1
+
+This first task is to adapt to the environment. We must use:
+
+```sh
+mysql -u root -pdees
+```
+
+and then we can use this
+
+```sh
+show tables;
+```
+
 
 ## Task 2
 
-In this attack, we were presented to the php file that is being ran under the server side
+In this attack, we were presented to the php file that is being ran under the server side.
 
 ```php
 $input_uname = $_GET[’username’];
@@ -17,8 +31,6 @@ $sql = "SELECT id, name, eid, salary, birth, ssn, address, email,
         FROM credential
         WHERE name= ’$input_uname’ and Password=’$hashed_pwd’";
 $result = $conn -> query($sql);
-
-
 ```
 
 ### Task 2.1 - Attack from webpage
@@ -147,3 +159,27 @@ For this example, assuming that we know that the password is hashed using the sh
 UPDATE credential SET
    nickname=’Boby’, password = '250e77f12a5ab6972a0895d290c4792f0a326ea8' WHERE nickname = Boby; -- email=’$input_email’, address=’$input_address’, Password=’$hashed_pwd’, PhoneNumber=’$input_phonenumber’ WHERE ID=$id;
 ```
+
+## How to prevent this kind of attack
+
+Here are some suggestations to make this kind of attacks more difficult to occur:
+
+1. Use Parameterized Statements (Prepared Statements). This will help to distinguish between the sql code and the sql data. Something like:
+
+```php
+$input_uname = $_GET['username'];
+$input_pwd = $_GET['Password'];
+$hashed_pwd = sha1($input_pwd);
+
+$stmt = $conn->prepare("SELECT id, name, eid, salary, birth, ssn, address, email, nickname, Password
+                        FROM credential
+                        WHERE name=? AND Password=?");
+$stmt->bind_param("ss", $input_uname, $hashed_pwd);
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+```
+
+2. Input validation using regular expressions and others
+
