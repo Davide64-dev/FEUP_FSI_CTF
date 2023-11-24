@@ -58,12 +58,16 @@ For this exploit, the most important keywords that we might have in mind are:
 
 * `--`: These two characters together are the declaration of the beggining of a comment in SQL.
 
+* `'`: This character marks the beggining and the end of a string in SQL
+
 ### Q3. Which SQL query is effectively executed with your malicious login attempt? Why does this query allow you to login?
 
 To have a successful malicious login attempt, we can use the following input
 
 * Username: `admin';--`
 * Password : `Anything that is not empty`
+
+What this will do is to write the username of the user we want to enter in (`admin`). Then we use `'` to close the string that queries to the database the user with that input. Then, we use the `;` to close the. Then we use the `--` to comment everything that comes after the query we want to execute.
 
 The actual query that is done is this one:
 
