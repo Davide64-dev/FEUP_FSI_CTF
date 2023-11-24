@@ -2,6 +2,11 @@
 
 In this CTF, we were presented to a Website that gives the php file to the user everytime he tries to enter the website (This source code is in the appendix of this document). The website looks like this:
 
+<div align="center">
+  <img src="images/CTF8/sql_website.png" alt="Form2" width="50%">
+</div>
+
+
 
 
 The most important part of the document is this:
