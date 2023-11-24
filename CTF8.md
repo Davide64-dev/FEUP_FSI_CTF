@@ -1,20 +1,10 @@
 # CTF 8 - SQL Injection
 
-In this CTF, we were presented to a Website that gives the php file to the user everytime he tries to enter the website (This source code is in the appendix of this document). The website looks like this:
-
-<div align="center">
-  <img src="images/CTF8/sql_website.png" alt="Form2" width="50%">
-</div>
-
-
-
-
-The most important part of the document is this:
+In this Capture The Flag (CTF) challenge, we encounter a website that provides a PHP file to the user each time they attempt to access it. The relevant source code is included in the document's appendix. The website's login functionality is susceptible to SQL injection, and we'll explore the details below.
 
 ```php
 <?php
     if (!empty($_POST)) {
-
         require_once 'config.php';
 
         $username = $_POST['username'];
@@ -23,18 +13,15 @@ The most important part of the document is this:
         $query = "SELECT username FROM user WHERE username = '".$username."' AND password = '".$password."'";
                                      
         if ($result = $conn->query($query)) {
-                                  
             while ($data = $result->fetchArray(SQLITE3_ASSOC)) {
                 $_SESSION['username'] = $data['username'];
-           
                 echo "<p>You have been logged in as {$_SESSION['username']}</p><code>";
                 include "/flag.txt";
                 echo "</code>";
-
             }
         } else {            
-            // falhou o login
-            echo "<p>Invalid username or password <a href=\"index.php\">Tente novamente</a></p>";
+            // Login failed
+            echo "<p>Invalid username or password <a href=\"index.php\">Try again</a></p>";
         }
     }
 ?>
@@ -44,7 +31,7 @@ The most important part of the document is this:
 
 ### Q1. Which SQL Query is executed everytime a user tries to login?
 
-Considering that the user is not an attacker, a normal query to a normal input from a user would look like this:
+The SQL query executed on login is as follows:
 
 ```sql
 SELECT username FROM user WHERE username = '<username>' AND password = '<password>'
@@ -52,30 +39,30 @@ SELECT username FROM user WHERE username = '<username>' AND password = '<passwor
 
 ### Q2. Which inputs you can manipulate to encroach the query? Which Special Characters you use and why?
 
-For this exploit, the most important keywords that we might have in mind are:
+To exploit the system, special characters like ;, --, and ' are crucial:
 
-* `;`: This character is important because it represents the end of an sql statement
+* `;`: Denotes the end of an SQL statement.
 
-* `--`: These two characters together are the declaration of the beggining of a comment in SQL.
+* `--`: Represents the beginning of an SQL comment.
 
-* `'`: This character marks the beggining and the end of a string in SQL
+* `'`: Marks the beginning and end of an SQL string.
 
 ### Q3. Which SQL query is effectively executed with your malicious login attempt? Why does this query allow you to login?
 
-To have a successful malicious login attempt, we can use the following input
+To achieve a successful malicious login attempt, we can manipulate the inputs as follows:
 
 * Username: `admin';--`
 * Password : `Anything that is not empty`
 
-What this will do is to write the username of the user we want to enter in (`admin`). Then we use `'` to close the string that queries to the database the user with that input. Then, we use the `;` to close the. Then we use the `--` to comment everything that comes after the query we want to execute.
+When utilizing the input `admin';--` for the username, the SQL injection exploit strategically employs special characters. First, the injected `'`serves to prematurely close the string that queries the database for the specified user, in this case, 'admin.' Following this, the semicolon (`;`) is employed to terminate the ongoing SQL statement. Finally, the double hyphen (`--`) is used to initiate an SQL comment, effectively nullifying any subsequent code that may follow in the original query.
 
-The actual query that is done is this one:
+This input manipulates the query as follows:
 
 ```sql
 SELECT username FROM user WHERE username = 'admin'; -- AND password = '".$password."'";
 ```
 
-Which is semanticaly equivelant to this:
+This is semantically equivalent to:
 
 ```sql
 SELECT username FROM user WHERE username = 'admin';
@@ -88,4 +75,94 @@ And the final result is this:
 
 <div align="center">
   <img src="images/CTF8/sql_final.png" alt="Form2" width="50%">
-</div>
+</div`
+
+
+
+
+## Appendix A - Source code
+
+```php
+<?php
+   ob_start();
+   session_start();
+   include "config.php";
+?>
+
+<?
+   // error_reporting(E_ALL);
+   // ini_set("display_errors", 1);
+?>
+
+<html lang = "en">
+   
+   <head>
+      <title>EasyVault</title>
+      <link href = "css/custom.css" rel = "stylesheet">
+      <!-- JavaScript Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+      
+      <style>
+        
+      </style>
+      
+   </head>
+	
+   <body>
+      
+      <h2>Unlock the vault</h2> 
+      <div class = "container form-signin">
+         
+         <?php
+            if (!empty($_POST)) {
+
+               require_once 'config.php';
+
+               $username = $_POST['username'];
+               $password = $_POST['password'];
+               
+               $query = "SELECT username FROM user WHERE username = '".$username."' AND password = '".$password."'";
+                                     
+               if ($result = $conn->query($query)) {
+                                  
+                  while ($data = $result->fetchArray(SQLITE3_ASSOC)) {
+                    $_SESSION['username'] = $data['username'];
+           
+                    echo "<p>You have been logged in as {$_SESSION['username']}</p><code>";
+                    include "/flag.txt";
+                    echo "</code>";
+
+                 }
+               } else {            
+                   // falhou o login
+                   echo "<p>Invalid username or password <a href=\"index.php\">Tente novamente</a></p>";
+               }
+            }
+         ?>
+      </div> <!-- /container -->
+      
+      <div class = "container">
+      
+         <form class = "form-signin" role = "form" style="text-align:center"
+            action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
+            ?>" method = "post">
+            <h4 class = "form-signin-heading">Login</h4>
+            <input type = "text" class = "form-control" 
+               name = "username" placeholder = "username" 
+               required autofocus></br>
+            <input type = "password" class = "form-control"
+               name = "password" placeholder = "password" required></br>
+            <button class = "btn btn-lg btn-primary btn-block" type = "submit" 
+               name = "login">Login</button>
+         </form>
+			<div class="footer">
+         Click here to clean the <a href = "logout.php" tite = "Logout">session.
+         </div>
+         
+      </div> 
+      
+   </body>
+</html>
+
+```
