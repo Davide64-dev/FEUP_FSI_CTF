@@ -58,7 +58,12 @@ For this exploit, the most important keywords that we might have in mind are:
 
 * `--`: These two characters together are the declaration of the beggining of a comment in SQL.
 
-### Q3. Qual query SQL é efetivamente executada com a tua tentativa de login maliciosa? Porque é que essa query te permite fazer login?
+### Q3. Which SQL query is effectively executed with your malicious login attempt? Why does this query allow you to login?
+
+To have a successful malicious login attempt, we can use the following input
+
+* Username: `admin';--`
+* Password : `Anything that is not empty`
 
 The actual query that is done is this one:
 
@@ -73,11 +78,3 @@ SELECT username FROM user WHERE username = 'admin';
 ```
 
 which do not require the password to enter into the system.
-
-```
-admin';--
-```
-
-```
-<anything except nothing>
-```
