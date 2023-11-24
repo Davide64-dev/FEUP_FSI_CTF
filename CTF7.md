@@ -96,14 +96,14 @@ Next, by analising the source code, we should answer the following questions:
 
 After answering the questions above, we had all the information needed to do the exploit.
 
-By analising the source code, we know that the correct value for the key is 0xbeef, which corresponds to the deciaml value 48879. Therefore, we calculated how many bytes we have to print in order to have the correct key value.
+By analising the source code, we know that the correct value for the key is 0xbeef, which corresponds to the decimal value 48879. Therefore, we calculated how many bytes we have to print in order to have the correct key value.
 We gave a dummy address for padding reasons, which is 4 bytes, and the address of the register we want (the key register in reverse) which is another 4 bytes. Then, we still had to print 48871 bytes (48879-8).
 
 Lastly, as the %n allows us to change the variable, we had everything we needed to execute the exploit.
 
 
 In order to execute the exploit, we adapted the python code from the challenge above to our challenge.
-We deleted the line "p.recvuntil(b"got:")" in order to not cause problems when running the python code.
+We deleted the line "p.recvuntil(b"got:")" in order to not cause problems when running the python script.
 
 (**print 12**)
 
