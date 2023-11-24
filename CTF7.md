@@ -35,14 +35,14 @@ Next, by analising the source code, we should answer the following questions:
     - The vulnerability allows an attacker to overwrite the buffer if they input more than 32 bytes, potentially leading to a buffer overflow. This, in turn, could enable the attacker to manipulate the execution stack, potentially leading to unauthorized access to values and control flow within the program.
 
 - *Which functionality allows us to obtain the flag?*
-    - By using a format string and the register where the ```load_flag()``` is called, we might able to access the flag.
+    - By using a format string and the register where the "flag" is stored, we might able to access the flag.
 
 
 ### Do the exploit
 
 After answering the questions above, we are able to do the exploit.
 
-Firstly, by running the command ```gdb program``` we are able to obtain the register of the ```load_flag()``` function.
+Firstly, by running the command ```gdb program``` we are able to obtain the register of the "flag".
 
 ![Image3](images/CTF7/3.png)
 
