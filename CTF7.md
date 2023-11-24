@@ -22,7 +22,8 @@ Here we obtain the following information:
 Even though these protections are in place, there are attacks that may still be possible. Some of them are:
 - Format strings vulnerabilities;
 - Canary bypass, attackers may attempt sophisticated techniques to manipulate or bypass the canary check;
-- Data-Only attacks, attacks that manipulate existing data without executing new code might still be feasible.
+- Data-Only attacks, attacks that manipulate existing data without executing new code might still be feasible;
+- Buffer overflow, since the attackers can predict the addresses.
 
 Next, by analising the source code, we should answer the following questions:
 
