@@ -77,6 +77,8 @@ Next, by analising the source code, we should answer the following questions:
 - *Which code line is the vulnerability found? What does the vulnerability allow?*
     - The vulnerability is on the line 13. The ```scanf()``` in the code scans 32 bytes into the buffer. However there is no check to make sure the user doens't input more than those bytes. Therefore, this allows an attacker to input more than 32 bytes causing a buffer overflow and possibilly gain access to unauthorized files.
 
+(**print 13**)
+
 - *Is the flag loaded to memory? Or there is a functionality that allows us to have access to the flag?*
     - By analising the code, we realise that the flag is not loaded to the memory. However we have an if clause that checks a key value and if it is the correct one then we get access to the backdoor, which in turn may give us access to the flag.
 
