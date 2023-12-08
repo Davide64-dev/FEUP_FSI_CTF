@@ -104,6 +104,18 @@ Finally, if we restart apache and access bank32, we can see that it is now trust
 ![Image15](images/11/pki15.png)
 
 ## TASK 5
+This task shows us how PKI protect us from Man in the Middle Attacks.
+First, let's add www.instagram.com to the DNS list:
+
+![Image16](images/11/pki16.png)
+
+Then, let's try to access it:
+
+![Image17](images/11/pki17.png)
+
+As we can see, the browser denies it.
+
+This happens because even though www.instagram.com is a real website and it gives the browser a real certificate validated by a trusted CA, the certificate does not match with instagram.com, but with bank32.com.
 
 
 ## TASK 6
