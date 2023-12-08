@@ -116,6 +116,7 @@ where E1 and E2 are letters we want to replace and K1 and K2 are the letters we 
 
 In the end, we get our key:
 ```
+CRYPT => DECRYPT
 a => c,
 b => f,
 c => m,
@@ -234,7 +235,41 @@ EARNING BEST DIRECTOR NOMINATIONS ARE FEW AND FAR BETWEEN
 
 ## TASK 2
 
-For this task, we will use
+For this task, we will use different encryption modes, with the following command:
+```shell
+$ openssl enc -ciphertype -e -in plain.txt -out cipher.bin \
+-K 00112233445566778889aabbccddeeff \
+-iv 0102030405060708
+```
+We will use these 3 ciphers:
+``` 
+-aes-128-cbc, -bf-cbc, -aes-128-cfb
+```
+Some information:
+
+AES is a widely used symmetric encryption algorithm. It uses a 128-bit block size and supports key sizes of 128, 192, or 256 bits.
+
+AES-CBC mode means that each plaintext block is XORed with the previous ciphertext block before encryption, adding complexity and security. It requires an Initialization Vector for encryption, and it's suitable for secure data transmission and storage.
+
+AES-CFB mode turns a block cipher into a stream cipher, where each plaintext block is encrypted and then XORed with the plaintext to create the ciphertext Like AES-CBC, it requires an IV. CFB can operate in different bit modes (128, 192, or 256). It's useful in cases where streaming data needs to be encrypted in smaller chunks without waiting for the entire block.
+
+BF is a symmetric key block cipher that operates on variable-length blocks (32 to 448 bits). CBC mode operates similarly to AES-CBC, XORing each plaintext block with the previous ciphertext block before encryption. BF was designed as a general-purpose algorithm and was popular for a time but is less commonly used today, especially compared to AES.
 
 ## TASK 3
+In this task, we want to encrypt a picture and take a look at the output.
 
+What we do is concatenate the header of the original picture with an encrypted body.
+
+We use 2 ciphers, cbc and ebc.
+
+Here are the commands and output:
+
+foto 1
+
+foto 2
+
+As we can see, ECB is not as good when it comes to phoyo encryption. This happens because of its deterministic nature. Each identical block of plaintext will be encrypted into the same ciphertext block. For photos or images, that contain repetitive patterns or large areas of uniform color, this results in recognizable patterns in the encrypted output.
+
+ECB is good for disk encryption, as the probability of finding similar blocks is not as high.
+
+CBC is very good with images, as we can see, becuase CBC XORs each plaintext block with the previous ciphertext block before encryption. This ensures that even small changes in the input (like altering a pixel in an image) will propagate throughout the entire encrypted image. This diffusion helps prevent recognizable patterns, making it harder for attackers to know information about the image from the ciphertext.
