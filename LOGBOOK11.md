@@ -63,10 +63,45 @@ DNS:www.bank32B.com"
 ```
 
 ## TASK 3
+For task 3, we want to user our CA to generate certificates. We use the following command to generate a X509 certificate (server.crt):
+```shell
+openssl ca -config myCA_openssl.cnf -policy policy_anything \
+-md sha256 -days 3650 \
+-in server.csr -out server.crt -batch \
+-cert ca.crt -keyfile ca.key
+```
 
+We need to create a demoCA/newcerts dir, as well as copy index.txt and serial.txt to demoCA.
+Only then will we have success
+
+![Image8](images/11/pki8.png)
+
+After removing the comment from ``` copy_extensions = copy ```, we print the output:
+![Image9](images/11/pki9.png)
+![Image10](images/11/pki10.png)
 
 ## TASK 4
+In this task, we will check how PK certificates are used by websites.
 
+First, we need to setup the docker container.
+
+Then, we take a look at the configuration of bank32_apache_ssl, where we can see the different aliases.
+
+![Image11](images/11/pki11.png)
+
+If we visit www.bank32.com, we get the following page. We can also see the certificate information. The browser doesn't trust it, as it wasn't signed by a trusted CA authority.
+
+![Image12](images/11/pki12.png)
+
+We can, however, import our own certificate, ca.crt.
+
+![Image13](images/11/pki13.png)
+
+Then, we copy server.crt and server.key to the volumes folder, and alter bank32_apache_ssl.conf on the terminal:
+![Image14](images/11/pki14.png)
+
+Finally, if we restart apache and access bank32, we can see that it is now trusted
+![Image15](images/11/pki15.png)
 
 ## TASK 5
 
