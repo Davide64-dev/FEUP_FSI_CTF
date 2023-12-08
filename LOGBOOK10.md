@@ -264,9 +264,9 @@ We use 2 ciphers, cbc and ebc.
 
 Here are the commands and output:
 
-foto 1
+![Image1](images/ecb.png)
 
-foto 2
+![Image2](images/cbc.png)
 
 As we can see, ECB is not as good when it comes to phoyo encryption. This happens because of its deterministic nature. Each identical block of plaintext will be encrypted into the same ciphertext block. For photos or images, that contain repetitive patterns or large areas of uniform color, this results in recognizable patterns in the encrypted output.
 
