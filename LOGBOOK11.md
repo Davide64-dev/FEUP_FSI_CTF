@@ -119,3 +119,6 @@ This happens because even though www.instagram.com is a real website and it give
 
 
 ## TASK 6
+Let's assume the attacker has control ovver the CA.
+
+If we create a new CSR to the CA to validate our website, generate a new certificate and substitute the old certificate and private key for the new ones, we will be able to establish a "safe" connection with the website
