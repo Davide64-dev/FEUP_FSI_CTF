@@ -87,7 +87,7 @@ def miller_rabin(n, k=5):
     return True  # n is probably prime
 ```
 
-Subsequently, armed with the implemented prime-checking code, we proceeded to determine the values of **p** and **q**. All that remained was to ascertain the value of **d**.
+Subsequently, armed with the implemented prime-checking code, we proceeded to determine the values of **p** and **q**. All that remained was to find the value of **d**.
 
 To uncover this, we leveraged the fact that *ed % (p-1)(q-1) = 1*. Consequently, we calculated the value of **phi**, ensuring it equaled *(p-1) * (q-1)*, representing the count of positive integers coprime to *n = p * q*. This led us to the conclusion that *e * d ≡ 1 (mod phi)*. To guarantee the existence of a modular inverse for **e**, the greatest common divisor (gcd) of **e** and **phi** had to be 1.
 
@@ -104,3 +104,79 @@ phi = (p - 1)*(q - 1)
 d = extended_gcd(e, phi)[1]
 ```
 
+Following these calculations, we modified the challenge.py code accordingly, incorporating the determined values to obtain the final flag.
+
+``` python
+# Python Module ciphersuite
+import os
+import sys
+from binascii import hexlify, unhexlify
+import primes as pr
+
+
+FLAG_FILE = '/flags/flag.txt'
+
+def enc(x, e, n):
+    int_x = int.from_bytes(x, "little")
+    y = pow(int_x,e,n)
+    return hexlify(y.to_bytes(256, 'little'))
+
+def dec(y, d, n):
+    int_y = int.from_bytes(unhexlify(y), "little")
+    x = pow(int_y,d,n)
+    return x.to_bytes(256, 'little')
+
+ciphertext = "6661333666333733326232653362393335326665393461383333646234623238343932393433393537386162363663626430636530643639386339303766363233326239373835656331643838646436353564356235623431363564383764613834343839653238613233613232343463333562323839663437616264353865626364316232626431353034663533333931313565313263346430386137313738303865633537643934646437383461306565323064383434306134356439386337386236646638663863623931363236313035616333303062623432623661633730313535653333663961353439656665316166633961333062306137616630303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030"
+
+n = 359538626972463181545861038157804946723595395788461314546860162315465351611001926265416954644815072042240227759742786715317579537628833244985694861278983658776278765248670945552624700842114861244038350415080579463449170543488350000513559971103113266279230395506643106140199255881465783500899243926273516848223
+
+e = 65537
+
+primes = []
+search_range = 200000
+
+for i in range(2**512, 2**512 + search_range):
+    if pr.miller_rabin(i):
+        primes.append(i)
+
+for i in range(2**512 - search_range, 2**512):
+    if pr.miller_rabin(i):
+        primes.append(i)
+
+p = q = -1
+print(f"Number of candidates: {len(primes)}\n")
+
+for i in primes:
+    if n % i == 0:
+        p = i
+        q = n // i
+        break
+
+assert p != -1 and q != -1
+assert p * q == n
+
+print("Found p and q")
+print(f"p = {p}")
+print(f"q = {q}\n")
+
+def extended_gcd(a, b):
+    if a == 0:
+        return (b, 0, 1)
+    else:
+        g, x, y = extended_gcd(b % a, a)
+        return (g, y - (b // a) * x, x)
+
+
+phi = (p - 1)*(q - 1)
+d = extended_gcd(e, phi)[1]
+
+print(f"e * d % phi = {e * d % phi}\n")
+
+print("Decoded ciphertext:")
+flag = dec(unhexlify(ciphertext.encode()), d, n).decode()
+print(flag)
+```
+
+Upon executing the modified code, we successfully obtained the flag, as illustrated in the image below.
+
+(**print 2**)
