@@ -43,3 +43,46 @@ print("Public parameters -- \ne: ", e, "\nn: ", n)
 print("ciphertext:", hexlify(enc(un_flag.encode(), e, n)).decode())
 sys.stdout.flush()
 ```
+
+
+Initially, our task involved implementing a function to test whether a number is prime, a crucial step in capturing the flag. To accomplish this, we opted to implement the Miller-Rabin algorithm, as was sugested, which is presented below(*primes.py*).
+
+``` python
+import random
+
+def miller_rabin(n, k=5):
+    """
+    Miller-Rabin primality test.
+
+    :param n: Number to test for primality.
+    :param k: Number of iterations for the test. Higher k means higher accuracy.
+    :return: True if n is probably prime, False if n is composite.
+    """
+    if n <= 1:
+        return False
+    if n == 2 or n == 3:
+        return True
+    if n % 2 == 0:
+        return False
+
+    # Write n as 2^r * d + 1
+    r, d = 0, n - 1
+    while d % 2 == 0:
+        r += 1
+        d //= 2
+
+    # Witness loop
+    for _ in range(k):
+        a = random.randint(2, n - 2)
+        x = pow(a, d, n)
+        if x == 1 or x == n - 1:
+            continue
+        for _ in range(r - 1):
+            x = pow(x, 2, n)
+            if x == n - 1:
+                break
+        else:
+            return False  # n is definitely composite
+
+    return True  # n is probably prime
+```
