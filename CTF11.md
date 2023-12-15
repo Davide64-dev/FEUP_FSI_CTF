@@ -7,7 +7,7 @@ The central focus of this CTF revolves around delving into the cipher mechanism 
 
 In this challenge, we were granted access to a server that transmitted an RSA-encoded flag (flag{xxxxxxxx}), along with details about the RSA encryption, including the module (n) and a public exponent (e), as we can see in the image below.
 
-(**print 1**)
+![Image1](images/CTF11/1.png)
 
 Furthermore, we were informed that the module was generated using a pair of prime numbers. Specifically, we were given the following information:
 - **p** is a prime number close to 2⁵¹²
@@ -179,4 +179,4 @@ print(flag)
 
 Upon executing the modified code, we successfully obtained the flag, as illustrated in the image below.
 
-(**print 2**)
+![Image2](images/CTF11/2.png)
