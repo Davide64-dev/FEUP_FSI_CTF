@@ -13,7 +13,7 @@ Furthermore, we were informed that the module was generated using a pair of prim
 - **p** is a prime number close to 2⁵¹²
 - **q** is a prime number close to 2⁵¹³
 
-Additionally, we were provided with the ``` challenge.py ``` file, which proved instrumental in comprehending the conversion process from the flag to its numeric representation, as well as the decoding algorithm that reversed this process.
+Additionally, we were provided with the *challenge.py* file, which proved instrumental in comprehending the conversion process from the flag to its numeric representation, as well as the decoding algorithm that reversed this process.
 
 ``` python
 # Python Module ciphersuite
