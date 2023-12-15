@@ -114,7 +114,7 @@ The subsequent step involves addressing the following questions to enhance our c
     - We validate the accuracy by verifying several criteria. For instance, we check if **p** and **q** are prime numbers, ensure that *p * q = n* (**n** is a known value), and confirm that the greatest common divisor between **phi** and **e** is 1, given that we have the value of **e**.
 
 - *Lastly, how can the key be extracted to decipher the ciphertext I received?*
-    - We successfully capture the flag by employing the values we discovered earlier and applying them to the formula: *flag = ciphertext^d mod n*. Implementing this formula in our program enables us to capture the flag.
+    - We successfully capture the flag by employing the values we discovered earlier and applying them to the formula: *flag = ciphertext<sup>d</sup> mod n*. Implementing this formula in our program enables us to capture the flag.
 
 
 
