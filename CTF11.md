@@ -15,7 +15,7 @@ Furthermore, we were informed that the module was generated using a pair of prim
 
 Additionally, we were provided with the ``` challenge.py ``` file, which proved instrumental in comprehending the conversion process from the flag to its numeric representation, as well as the decoding algorithm that reversed this process.
 
-```PYTHON
+``` PYTHON
 # Python Module ciphersuite
 import os
 import sys
