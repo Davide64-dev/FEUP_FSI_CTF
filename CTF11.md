@@ -104,7 +104,21 @@ phi = (p - 1)*(q - 1)
 d = extended_gcd(e, phi)[1]
 ```
 
-Following these calculations, we modified the challenge.py code accordingly, incorporating the determined values to obtain the final flag.
+
+The subsequent step involves addressing the following questions to enhance our comprehension of how to capture the flag.
+
+- *How can I use the acquired information to deduce the RSA values utilized for encoding the flag?*
+    - The acquired information enabled us to identify the prime numbers (**p** and **q**), which were crucial for determining the private key value (**d**). Subsequently, this information was used to decrypt the flag.
+
+- *How can I validate the accuracy of my inference?*
+    - We validate the accuracy by verifying several criteria. For instance, we check if **p** and **q** are prime numbers, ensure that *p * q = n* (**n** is a known value), and confirm that the greatest common divisor between **phi** and **e** is 1, given that we have the value of **e**.
+
+- *Lastly, how can the key be extracted to decipher the ciphertext I received?*
+    - We successfully capture the flag by employing the values we discovered earlier and applying them to the formula: *flag = ciphertext^d mod n*. Implementing this formula in our program enables us to capture the flag.
+
+
+
+After answering to those questions, we modified the *challenge.py* code to incorporate the determined values to obtain the final flag.
 
 ``` python
 # Python Module ciphersuite
@@ -177,6 +191,6 @@ flag = dec(unhexlify(ciphertext.encode()), d, n).decode()
 print(flag)
 ```
 
-Upon executing the modified code, we successfully obtained the flag, as illustrated in the image below.
+Lastly, upon executing the modified code, we successfully obtained the flag, as illustrated in the image below.
 
 ![Image2](images/CTF11/2.png)
