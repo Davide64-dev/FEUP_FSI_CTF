@@ -10,8 +10,8 @@ In this challenge, we were granted access to a server that transmitted an RSA-en
 (**print 1**)
 
 Furthermore, we were informed that the module was generated using a pair of prime numbers. Specifically, we were given the following information:
-- p is a prime number close to 2⁵¹²
-- q is a prime number close to 2⁵¹³
+- **p** is a prime number close to 2⁵¹²
+- **q** is a prime number close to 2⁵¹³
 
 Additionally, we were provided with the ``` challenge.py ``` file, which proved instrumental in comprehending the conversion process from the flag to its numeric representation, as well as the decoding algorithm that reversed this process.
 
@@ -45,7 +45,7 @@ sys.stdout.flush()
 ```
 
 
-Initially, our task involved implementing a function to test whether a number is prime, a crucial step in capturing the flag. To accomplish this, we opted to implement the Miller-Rabin algorithm, as was sugested, which is presented below(*primes.py*).
+Initially, our task involved implementing a function to test whether a number is prime, a crucial step in capturing the flag. To accomplish this, we opted to implement the Miller-Rabin algorithm, as was sugested, which is presented below (*primes.py*).
 
 ``` python
 import random
@@ -86,3 +86,21 @@ def miller_rabin(n, k=5):
 
     return True  # n is probably prime
 ```
+
+Subsequently, armed with the implemented prime-checking code, we proceeded to determine the values of **p** and **q**. All that remained was to ascertain the value of **d**.
+
+To uncover this, we leveraged the fact that *ed % (p-1)(q-1) = 1*. Consequently, we calculated the value of **phi**, ensuring it equaled *(p-1) * (q-1)*, representing the count of positive integers coprime to *n = p * q*. This led us to the conclusion that *e * d ≡ 1 (mod phi)*. To guarantee the existence of a modular inverse for **e**, the greatest common divisor (gcd) of **e** and **phi** had to be 1.
+
+``` python
+def extended_gcd(a, b):
+    if a == 0:
+        return (b, 0, 1)
+    else:
+        g, x, y = extended_gcd(b % a, a)
+        return (g, y - (b // a) * x, x)
+
+
+phi = (p - 1)*(q - 1)
+d = extended_gcd(e, phi)[1]
+```
+
