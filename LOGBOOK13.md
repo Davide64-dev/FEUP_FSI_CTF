@@ -21,5 +21,5 @@ pkt = sniff(iface='br-ced6656419bc', filter='icmp', prn=print_pkt)
 
 Then, we used the command `chmod a+x sniffer.py` to make this program executable.
 
-Then the objective is to ping the HostB from HostA. To do that, we need to get the ip from the Host B machine. That could be done with the command `ifconfig`. We found out that the IP of the Host B machine is `ping 10.9.0.6`.
+Then the objective is to ping the HostB from HostA. To do that, we need to get the ip from the Host B machine. That could be done with the command `ifconfig`. We found out that the IP of the Host B machine is `ping 10.9.0.6`. Then, what we must do is to `ping 10.9.0.6` in Host A machine.
 
