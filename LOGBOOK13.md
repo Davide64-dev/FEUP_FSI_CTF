@@ -96,6 +96,10 @@ for ttl in range(1, 16):
 
 The capture was started in wireshark and the program was ran, showing the following output:
 
+![Task 1.3](images/LOGBOOK13/image3.1.png)
+
+## Task 1.4 - Sniffing and-then Spoofing
+
 
 
 
