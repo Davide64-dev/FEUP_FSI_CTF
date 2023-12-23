@@ -51,3 +51,23 @@ And the output was:
 
 ![Task 1.1](images/LOGBOOK13/image3.png)
 
+## Task 1.2 - Spoofing ICMP Packets
+
+For this task, another file names `spoofer.py` was created for the testing. It was based on the template that was given in the guide:
+
+```py
+#!/usr/bin/env python3
+
+from scapy.all import *
+
+a = IP()
+a.dst = '10.0.2.3'
+b = ICMP()
+p = a/b
+send(p)
+
+ls(a)
+```
+
+Then, once again we ran  `chmod a+x spoofer.py`
+
