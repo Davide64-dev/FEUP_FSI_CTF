@@ -100,6 +100,10 @@ The capture was started in wireshark and the program was ran, showing the follow
 
 ## Task 1.4 - Sniffing and-then Spoofing
 
+For this task, it was create a file named `sniffing_spoofing.py` to solve us the problem.
+
+![Task 1.4](images/LOGBOOK13/ima)
+
 
 
 
