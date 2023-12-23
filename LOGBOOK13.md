@@ -71,6 +71,31 @@ ls(a)
 
 Then, once again we ran  `chmod a+x spoofer.py`. After that, we opened the Wireshark and selected the attacker interface, `enp0s3`. After that, we ran the program `spoofer.py` and see the results:
 
+![Task 1.2](images/LOGBOOK13/image2.1.png)
+
+
+![Task 1.2](images/LOGBOOK13/image2.2.png)
+
+We can see that there is a packet that have the same source IP that the attacker container. The destinity of the IP addres is the one that we have defined before, `10.2.0.3`.
+
+## Task 1.3 - Traceroute
+
+For this task, it was created a file name `traceroute.py`. Once again, this file was already given in the template. However, the program as previously changes to address more than one values of Time to Live (TTl).
+
+```py
+#!/usr/bin/env python3
+from scapy.all import *
+
+for ttl in range(1, 16):
+  a = IP()
+  a.dst = '8.8.8.8'
+  b = ICMP()
+  a.ttl = ttl
+  send(a/b)
+```
+
+The capture was started in wireshark and the program was ran, showing the following output:
+
 
 
 
