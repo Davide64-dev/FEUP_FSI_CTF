@@ -69,5 +69,8 @@ send(p)
 ls(a)
 ```
 
-Then, once again we ran  `chmod a+x spoofer.py`
+Then, once again we ran  `chmod a+x spoofer.py`. After that, we opened the Wireshark and selected the attacker interface, `enp0s3`. After that, we ran the program `spoofer.py` and see the results:
+
+
+
 
