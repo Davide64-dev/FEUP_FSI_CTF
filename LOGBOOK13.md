@@ -1,12 +1,10 @@
 # LOGBOOK13 - Sniffing and Spoofing
 
-The goal of the work this week is to understand mechanisms for monitoring and manipulating traffic.
+This week's focus was on understanding mechanisms for monitoring and manipulating network traffic.
 
 ## Task 1.1 - Sniffing Packets
 
-The first step on this task is to go to the terminal of the attacker container and to use the `ifconfig` command to find out what is the name of the interface. We found out that the name of the interface is: `br-ced6656419bc`.
-
-Then, we go to the shared folder `volumes` in the attacker terminal and create a file named `sniffer.py` with the following code that was suggested in the guide:
+The initial step involved identifying the network interface on the attacker container using the `ifconfig` command, which revealed the interface name as `br-ced6656419bc`. A Python script named `sniffer.py` was created in the shared folder `volumes` based on the provided guide. This script utilized Scapy to sniff and display ICMP packets on the specified interface.
 
 ```py
 #!/usr/bin/env python3
@@ -28,8 +26,6 @@ Then the objective is to ping the HostB from HostA. To do that, we need to get t
 Then, we used `su seed` command to try to run the code withoud root privileges, which leads us to an error:
 
 ![Task 1.1](images/LOGBOOK13/image1.png)
-
-Para capturar quaisquer **_TCP packets_ provenientes de um IP específico e com uma porta de destino com o número 23**, alteramos a seguinte linha do ficheiro ```task1A.py```, inserindo no _filter_ o ip do **_hostB container_** e a porta de destino 23.
 
 The next challange that was proposed to us is to capture any TCP packets that comes from a specific destination port with the number 23. For that, it was just need to change the last line of `sniffer.py`:
 
@@ -126,7 +122,16 @@ def spoof(packet):
         send(newpkt, verbose=0)
 
 packet = sniff(iface='br-ced6656419bc', filter='icmp and host 1.2.3.4', prn=spoof)
+
 ```
+
+The ideia is to run the following script in the attacker machine and use the host A machine to ping what is necessary. The first ping we use is `ping 1.2.3.4`: The result is the following:
+
+![Task 1.3](images/LOGBOOK13/image4.1.png)  
+
+In the host machine the resukt is the following:
+
+![Task 1.3](images/LOGBOOK13/image4.2.png)
 
 
 
