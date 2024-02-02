@@ -1,6 +1,6 @@
 # LOGBOOK 2
 
-## Identificatiom
+## Identification
 
 - Citrix ADC enhances application performance with traffic optimization, security, and balancing across networks, vital for businesses.
 - Critical CVE-2023-3519 vulnerability in Citrix ADC and Gateway exposes organizations to remote code execution and data compromise.

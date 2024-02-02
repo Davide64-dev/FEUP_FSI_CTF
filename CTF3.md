@@ -1,4 +1,4 @@
-# LOGBOOK 3 - CVE-2021-34646
+# CTF 3 - CVE-2021-34646
 
 Versions of the Booster for WooCommerce WordPress plugin up to and including 5.4.3 have a security vulnerability related to authentication bypass. This vulnerability stems from a weakness in the random token generation process within the "reset_and_mail_activation_link" function. Exploiting this vulnerability enables malicious actors to impersonate users and trigger email address verification for arbitrary accounts, including those with administrative privileges. Consequently, attackers can automatically log in as the targeted user, including site administrators.
 
