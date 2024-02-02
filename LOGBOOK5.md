@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 }
 ```
 
-![Task1](images/logbook5/git51.png)
+![Task1](images/LOGBOOK5/git51.png)
 
 ## Task 2
 
@@ -86,7 +86,7 @@ The program above presents a buffer overflow vulnerability. It starts by retriev
 
 We compile it and turn off StackGuard and the non-executable stack protections using the "-fno-stack-protector" and "-z execstack" options. We then make it a root-owned Set-UID program, by changing its' permissions.
 
-```shell
+```sh
 $ gcc -DBUF_SIZE=100 -m32 -o stack -z execstack -fno-stack-protector stack.c
 $ sudo chown root stack
 $ sudo chmod 4755 stack
@@ -96,7 +96,7 @@ $ sudo chmod 4755 stack
 
 Our objective in this task is to exploit the buffer-overflow vulnerability in the target program. To achieve this, we'll use a debugger-based approach to pinpoint the vulnerability, using gdb to debug the stack-L1-dbg.
 
-![Task3](images/logbook5/git52.png)
+![Task3](images/LOGBOOK5/git52.png)
 
 ```py
 #!/usr/bin/python3

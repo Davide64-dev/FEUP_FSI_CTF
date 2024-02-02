@@ -1,17 +1,17 @@
-# CTF6 - XSS + CSRF
+# CTF 6 - XSS + CSRF
 
 The primary objective of this Capture The Flag (CTF) challenge is to attack a website using XSS and CSRF, gaining access to the flag.
 
 ## The Exploit
 Firstly, we need to ask to ask for a new flag. Remember the request id at the top of the page, as it will be important down the line.
 
-![image1](images/ctfxss/xss1.png)
+![image1](images/CTF6/xss1.png)
 
 After that, we reach the following page:
-![image2](images/ctfxss/xss2.png)
+![image2](images/CTF6/xss2.png)
 
 If we press the link over **page**, we will get access to the admin page, but we won't be able to do anything.
-![image3](images/ctfxss/xss3.png)
+![image3](images/CTF6/xss3.png)
 
 Here is where we start the exploit.
 
@@ -37,7 +37,7 @@ To see the flag, all we have to do is go back to the admin tab and press **here*
 
 If the exploit was performed correctly, we should see the flag on top of the text box with our original input.
 
-![image4](images/ctfxss/xss4.png)
+![image4](images/CTF6/xss4.png)
 
 ## Explanation
 

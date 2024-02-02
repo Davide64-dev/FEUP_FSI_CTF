@@ -21,13 +21,13 @@ print(key)
 Then, the file is simplified by converting all upper cases to lower cases,
 and then removeing all the punctuations and numbers.The spaces between words are kept, something that doesn't happen in the real world.
 
-```shell
+```sh
 $ tr [:upper:] [:lower:] < article.txt > lowercase.txt
 $ tr -cd ’[a-z][\n][:space:]’ < lowercase.txt > plaintext.txt
 ```
 
 Lastly, the ``` tr ``` command is used to encrypt:
-```shell
+```sh
 tr ’abcdefghijklmnopqrstuvwxyz’ ’<encryption key>’ \
 < plaintext.txt > ciphertext.txt
 ```
@@ -102,7 +102,6 @@ nvh: 11
 cmu: 11
 tmq: 10
 vhp: 10
-
 ```
 
 If we consult the wikiedia page of common [bigrams](https://en.wikipedia.org/wiki/Bigram) in english, we come to the conclusion that 'th' is the most common. We can apply similiar logic to our text - the frequency won't be the exact same, but considering that the text is big enough, similar patterns will occur.
@@ -236,13 +235,14 @@ EARNING BEST DIRECTOR NOMINATIONS ARE FEW AND FAR BETWEEN
 ## TASK 2
 
 For this task, we will use different encryption modes, with the following command:
-```shell
+
+```sh
 $ openssl enc -ciphertype -e -in plain.txt -out cipher.bin \
 -K 00112233445566778889aabbccddeeff \
 -iv 0102030405060708
 ```
 We will use these 3 ciphers:
-``` 
+```sh
 -aes-128-cbc, -bf-cbc, -aes-128-cfb
 ```
 Some information:
@@ -264,9 +264,9 @@ We use 2 ciphers, cbc and ebc.
 
 Here are the commands and output:
 
-![Image1](images/ecb.png)
+![Image1](images/LOGBOOK10/ecb.png)
 
-![Image2](images/cbc.png)
+![Image2](images/LOGBOOK10/cbc.png)
 
 As we can see, ECB is not as good when it comes to phoyo encryption. This happens because of its deterministic nature. Each identical block of plaintext will be encrypted into the same ciphertext block. For photos or images, that contain repetitive patterns or large areas of uniform color, this results in recognizable patterns in the encrypted output.
 
