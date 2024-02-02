@@ -1,11 +1,3 @@
-## Description of the Group
-
-* Class: 09
-* Student:
-    - Davide Pinto Teixeira up202109860 
-    - Maria Abreu da Costa up202108849
-    - João António Teixeira Coelho up202004846
-
 
 | Week        | LOGBOOK     | CTF |
 | ----------- | ----------- | --- |
@@ -21,3 +13,11 @@
 | Week 11 | [PKI](LOGBOOK11.md) | [RSA](CTF11.md) |
 | Week 12 | - | - |
 | Week 13 | [Sniffing and Spoofing](LOGBOOK13.md) | [Find-my-TLS](CTF13.md) |
+
+## Description of the Group
+
+* Class: 09
+* Student:
+    - Davide Pinto Teixeira up202109860 
+    - Maria Abreu da Costa up202108849
+    - João António Teixeira Coelho up202004846
