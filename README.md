@@ -1,3 +1,10 @@
+# LOGBOOKs & Capture the Flag Reports
+
+## Overview
+
+This repository houses the logbooks and Capture The Flag (CTF) challenges. The development of this program is an integral part of the curriculum for the [Computer Security Foundations](https://sigarra.up.pt/feup/en/UCURR_GERAL.FICHA_UC_VIEW?pv_ocorrencia_id=520326) course.
+
+
 
 | Week        | LOGBOOK     | CTF |
 | ----------- | ----------- | --- |
