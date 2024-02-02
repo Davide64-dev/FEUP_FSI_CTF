@@ -1,4 +1,4 @@
-# LOGBOOK10
+# LOGBOOK 10
 This logbook documents the work done for week 10 of the FSI course - [link to guide](https://seedsecuritylabs.org/Labs_20.04/Files/Crypto_Encryption/Crypto_Encryption.pdf).
 
 ## Setting up

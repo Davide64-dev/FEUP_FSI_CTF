@@ -1,4 +1,4 @@
-# LOGBOOK11
+# LOGBOOK 11
 This logbook documents the work done for week 11 of the FSI course - [link to guide](https://seedsecuritylabs.org/Labs_20.04/Files/Crypto_PKI/Crypto_PKI.pdf).
 
 ## Setting up

@@ -1,4 +1,4 @@
-# LOGBOOK13 - Sniffing and Spoofing
+# LOGBOOK 13 - Sniffing and Spoofing
 
 This week's focus was on understanding mechanisms for monitoring and manipulating network traffic.
 

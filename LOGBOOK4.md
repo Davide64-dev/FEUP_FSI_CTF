@@ -1,4 +1,4 @@
-# LOGBOOK4
+# LOGBOOK 4
 
 This document pretends to document the work that was  during week 4 of the FSI course - [link to guide](https://seedsecuritylabs.org/Labs_20.04/Files/Environment_Variable_and_SetUID/Environment_Variable_and_SetUID.pdf)
 

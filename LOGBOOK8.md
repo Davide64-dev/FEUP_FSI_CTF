@@ -1,4 +1,4 @@
-# SQL Injection LogBook
+# LOGBOOK 8 - SQL Injection LogBook
 
 This logbook documents the exploration and findings in the SQL Injection lab. It aims to analyze the vulnerabilities, identify errors, and propose modifications to enhance system security against such attacks.
 
