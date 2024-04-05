@@ -75,12 +75,14 @@ And the final result is this:
 
 <div align="center">
   <img src="images/CTF8/sql_final.png" alt="Form2" width="50%">
-</div`
+</div>
 
 
 
 
 ## Appendix A - Source code
+
+
 
 ```php
 <?php
